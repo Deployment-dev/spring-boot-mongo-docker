@@ -2,26 +2,26 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    name: spring-boot-mongo-docker
+    name: spring-boot
   name: spring-controller
   namespace: spring-boot
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: spring-boot-mongo-docker
+      name: spring-boot
   template:
     metadata:
       labels:
-        name: spring-boot-mongo-docker
+        name: spring-boot
     spec:
       imagePullSecrets:
       - name: dockerreposecret
       containers:
-      - image: pachaanilkumar/spring-boot-mongo-docker:7fc07d0
-        name: spring-boot-mongo-docker
+      - image: pachaanilkumar/spring-boot:7fc07d0
+        name: spring-boot
         ports:
-        - name: spring-boot-mongo-docker
+        - name: spring-boot
           containerPort: 8080
 ---
 # Node Port Service
@@ -29,8 +29,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: spring-boot-mongo-docker
-  name: spring-boot-mongo-docker
+    name: spring-boot
+  name: spring-boot
   namespace: spring-boot
 spec:
   type: NodePort
@@ -38,4 +38,4 @@ spec:
     - port: 8080
       targetPort: 8080
   selector:
-    name: spring-boot-mongo-docker
+    name: spring-boot
