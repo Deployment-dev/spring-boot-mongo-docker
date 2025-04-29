@@ -1,0 +1,20 @@
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bff-cms-service-vs
+  namespace: investment=module
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - bff-cms-service-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /bff-cms-service
+    route:
+    - destination:
+        host: bff-cms-service
+        port:
+          number: 8080

@@ -1,41 +1,25 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    name: spring-boot
-  name: spring-controller
-  namespace: spring-boot
+    app: bff-cms-service
+  name: bff-cms-service
+  namespace: investment=module
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      name: spring-boot
+      app: bff-cms-service
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: 'true'
       labels:
-        name: spring-boot
+        app: bff-cms-service
     spec:
-      imagePullSecrets:
-      - name: dockerreposecret
       containers:
-      - image: pachaanilkumar/spring-boot-mongo-docker:b0997eb
-        name: spring-boot
+      - name: bff-cms-service
+        image: your-docker-image
         ports:
-        - name: spring-boot
-          containerPort: 8085
----
-# Node Port Service
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    name: spring-boot
-  name: spring-boot
-  namespace: spring-boot
-spec:
-  type: NodePort
-  ports:
-    - port: 8085
-      targetPort: 8085
-  selector:
-    name: spring-boot
+        - containerPort: 8080
+      restartPolicy: Always
