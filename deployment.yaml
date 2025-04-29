@@ -3,22 +3,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: bff-cms-service
-  name: bff-cms-service
-  namespace: investment=module
+    app: boi-debit-card-service
+  name: boi-debit-card-service
+  namespace: prelogin-profile-dev
 spec:
   selector:
     matchLabels:
-      app: bff-cms-service
+      app: boi-debit-card-service
   template:
     metadata:
       annotations:
         sidecar.istio.io/inject: 'true'
       labels:
-        app: bff-cms-service
+        app: boi-debit-card-service
     spec:
       containers:
-      - name: bff-cms-service
+      - name: boi-debit-card-service
         image: your-docker-image
         ports:
         - containerPort: 8080

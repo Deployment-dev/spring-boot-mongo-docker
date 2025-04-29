@@ -2,8 +2,8 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: bff-cms-service-gateway
-  namespace: investment=module
+  name: boi-debit-card-service-gateway
+  namespace: prelogin-profile-dev
 spec:
   selector:
     istio: ingressgateway

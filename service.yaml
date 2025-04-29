@@ -2,13 +2,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: bff-cms-service
-  namespace: investment=module
+  name: boi-debit-card-service
+  namespace: prelogin-profile-dev
   labels:
-    app: bff-cms-service
+    app: boi-debit-card-service
 spec:
   selector:
-    app: bff-cms-service
+    app: boi-debit-card-service
   ports:
   - name: http
     protocol: TCP
