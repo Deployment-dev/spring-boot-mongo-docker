@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: boi-debit-card-service
-        image: your-docker-image
+        image: pachaanilkumar/spring-boot-mongo-docker:b0997eb
         ports:
         - containerPort: 8080
       restartPolicy: Always
